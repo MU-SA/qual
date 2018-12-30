@@ -1,5 +1,5 @@
 {
-  "name": "untitled1",
+  "name": "Qual",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -10,6 +10,7 @@
     "debug": "~2.6.9",
     "ejs": "^2.6.1",
     "express": "~4.16.0",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
     "express-handlebars": "*",
     "express-validator": "*",
     "http-errors": "~1.6.2",
@@ -19,5 +20,7 @@
     "node-persist": "^3.0.2",
     "nodemon": "^1.18.9",
     "pug": "2.0.0-beta11"
-  }
+  },
+  "author": "Muhammad Saleh",
+  "license": "MIT"
 }
