@@ -10,7 +10,8 @@
     "debug": "~2.6.9",
     "ejs": "^2.6.1",
     "express": "~4.16.0",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix start
+    && npm run build --prefix start",
     "express-handlebars": "*",
     "express-validator": "*",
     "http-errors": "~1.6.2",
