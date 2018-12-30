@@ -1,0 +1,40 @@
+<div class="register-container mb-3" style="margin-top: -150px">
+
+
+    {{#if errors}}
+        {{#each errors}}
+            <div class="alert alert-danger">{{msg}}</div>
+        {{/each}}
+    {{/if}}
+
+    <form method="post" onsubmit="return getContent()" action="/post_job">
+        <div class="row">
+            <h4>Post a job</h4>
+            <div class="input-group ">
+                <input name="job_title" class="bg-white box-shadow" type="text" placeholder="Job Title"/>
+            </div>
+            <div class="input-group ">
+                <input name="company_name" class="bg-white box-shadow" type="text" placeholder="Company name"/>
+            </div>
+            <div class="input-group ">
+                <input name="job_loc" class="bg-white box-shadow" type="text" placeholder="Job Location"/>
+            </div>
+            <p class="subtitle-2 mt-2">Job Description</p>
+            <div class="input-group ">
+                <div  id="temp_desc" class="bg-white text-left box-shadow w-100 p-2"
+                     type="text"  contenteditable>
+
+                </div>
+                <textarea name="job_desc"  class="display-none" id="job_desc"></textarea>
+            </div>
+
+
+        </div>
+        <button class="r-btn c-white backg-dark border-0" style="height: 60px">Post</button>
+    </form>
+</div>
+<script>
+    function getContent(){
+        document.getElementById("job_desc").value = document.getElementById("temp_desc").innerHTML;
+    }
+</script>

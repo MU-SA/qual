@@ -1,0 +1,69 @@
+<div class="register-container mb-3" style="margin-top: -200px">
+
+
+    {{#if errors}}
+        {{#each errors}}
+            <div class="alert alert-danger">{{msg}}</div>
+        {{/each}}
+    {{/if}}
+
+    <form method="post" action="/register">
+        <div class="row">
+            <h4>Account Register</h4>
+            <div class="input-group input-group-icon">
+                <input name="name" type="text" placeholder="Full Name"/>
+                <div class="input-icon"><i class="fa fa-user"></i></div>
+            </div>
+
+            <div class="input-group input-group-icon">
+                <input name="email" type="email" placeholder="Email Adress"/>
+                <div class="input-icon"><i class="fa fa-envelope"></i></div>
+            </div>
+            <div class="input-group input-group-icon">
+                <input name="password" type="password" placeholder="Password"/>
+                <div class="input-icon"><i class="fa fa-key"></i></div>
+            </div>
+            <div class="input-group input-group-icon">
+                <input name="password2" type="password" placeholder="Confirm Password"/>
+                <div class="input-icon"><i class="fa fa-repeat"></i></div>
+            </div>
+            <div class="input-group input-group-icon">
+                <input name="phone" type="number" placeholder="Telephone Number (Optionally)"/>
+                <div class="input-icon"><i class="fa fa-phone"></i></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-half">
+                <h4>Date of Birth</h4>
+                <div class="input-group">
+                    <div class="col-third">
+                        <input name="b_day" type="number" placeholder="DD"/>
+                    </div>
+                    <div class="col-third">
+                        <input name="b_month" type="number" placeholder="MM"/>
+                    </div>
+                    <div class="col-third">
+                        <input name="b_year" type="number" placeholder="YYYY"/>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-half">
+                <h4>Gender</h4>
+                <div class="input-group">
+                    <input type="radio" name="gender" value="male" id="gender-male"/>
+                    <label for="gender-male">Male</label>
+                    <input type="radio" name="gender" value="female" id="gender-female"/>
+                    <label for="gender-female">Female</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-group">
+                <input value="hr" name="type" type="checkbox" id="terms"/>
+                <label for="terms">HR?</label>
+            </div>
+        </div>
+        <button class="r-btn c-white backg-dark border-0" style="height: 60px">Register</button>
+    </form>
+</div>

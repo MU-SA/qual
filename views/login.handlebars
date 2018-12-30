@@ -1,0 +1,27 @@
+<div class="register-container mb-3" style="margin-top: -200px">
+
+
+    {{#if errors}}
+        {{#each errors}}
+            <div class="alert alert-danger">{{msg}}</div>
+        {{/each}}
+    {{/if}}
+
+    <form method="post" action="/login">
+        <div class="row">
+            <h4>Login</h4>
+
+
+            <div class="input-group input-group-icon">
+                <input name="email" type="email" placeholder="Email Address"/>
+                <div class="input-icon"><i class="fa fa-envelope"></i></div>
+            </div>
+            <div class="input-group input-group-icon">
+                <input name="password" type="password" placeholder="Password"/>
+                <div class="input-icon"><i class="fa fa-key"></i></div>
+            </div>
+
+        </div>
+        <button class="r-btn c-white backg-dark border-0" style="height: 60px">Sign In</button>
+    </form>
+</div>
