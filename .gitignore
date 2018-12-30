@@ -10,7 +10,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Runtime data
+# Runtime
 pids
 *.pid
 *.seed
@@ -58,6 +58,9 @@ typings/
 
 # Yarn Integrity file
 .yarn-integrity
+
+
+.DS_Store
 
 # dotenv environment variables file
 .env

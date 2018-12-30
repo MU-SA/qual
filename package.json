@@ -5,12 +5,15 @@
   "scripts": {
     "start": "nodemon ./bin/www"
   },
+  "engines": {
+    "node": "10.6.0"
+  }
+  ,
   "dependencies": {
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "ejs": "^2.6.1",
     "express": "~4.16.0",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix start && npm run build --prefix start",
     "express-handlebars": "*",
     "express-validator": "*",
     "http-errors": "~1.6.2",
