@@ -1,7 +1,7 @@
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+let express = require('express');
+let path = require('path');
+let cookieParser = require('cookie-parser');
+let bodyParser = require('body-parser');
 var exphbs = require('express-handlebars');
 var expressValidator = require('express-validator');
 var mongo = require('mongodb');
@@ -12,6 +12,7 @@ var loginRouter = require('./routes/login');
 var logout = require('./routes/logout');
 var post_job = require('./routes/post_job');
 var jobs = require('./routes/jobs');
+var send_cv = require('./routes/send_cv');
 
 var app = express();
 
@@ -28,7 +29,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 mongoose.connect('mongodb://localhost/iaProject', {useNewUrlParser: true});
 var db = mongoose.connection;
-db.c
 // Express Validator
 app.use(expressValidator({
     errorFormatter: function (param, msg, value) {
@@ -54,6 +54,7 @@ app.use('/logout', logout);
 app.use('/login', loginRouter);
 app.use('/post_job', post_job);
 app.use('/register', registerRouter);
+app.use('/send_cv', send_cv);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

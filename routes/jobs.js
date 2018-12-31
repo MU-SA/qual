@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models/User');
 const storage = require('node-persist');
+
 let logged = true;
 
 let type = '';

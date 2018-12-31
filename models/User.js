@@ -8,8 +8,8 @@ var UserSchema = mongoose.Schema({
     password: {
         type: String
     },
-    name:{
-      type: String
+    name: {
+        type: String
     },
     phone: {
         type: String
@@ -20,10 +20,12 @@ var UserSchema = mongoose.Schema({
     birthdate: {
         type: String
     },
-    type:{
-        type:String
+    type: {
+        type: String
     },
-    jobs:[{job_desc:String, job_loc:String, job_title:String, company_name:String}]
+    jobs: [{job_desc: String, job_loc: String, job_title: String, company_name: String,
+        candidates: [{id: String}]
+    }]
 });
 
 var User = module.exports = mongoose.model('User', UserSchema);

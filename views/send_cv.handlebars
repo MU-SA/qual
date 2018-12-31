@@ -1,0 +1,17 @@
+<div class="register-container mb-3" style="margin-top: -200px">
+
+
+    {{#if errors}}
+        {{#each errors}}
+            <div class="alert alert-danger">{{code}}</div>
+        {{/each}}
+    {{/if}}
+
+    <form action="/send_cv" method="post" enctype="multipart/form-data">
+        <div class="row">
+            <h4>Upload CV</h4>
+            <input type="file" name="filetoupload" class="m-2">
+        </div>
+        <button class="r-btn c-white backg-dark border-0" style="height: 60px">Submit</button>
+    </form>
+</div>

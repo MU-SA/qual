@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const storage = require('node-persist');
+var User = require('../models/User');
 
 let logged = true;
 
@@ -20,7 +21,25 @@ async function getData(res) {
             res.render('logged', {name: name, logged: 'Logged', Desc: 'IA Project', hr: 'hr'});
 
         } else {
-            res.render('logged', {name: name, logged: 'Logged', Desc: 'IA Project'});
+            User.find({}, function (err, ress) {
+                let jobs = [];
+                for (let i = 0; i < ress.length; i++) {
+                    for (let j = 0; j < ress[i].jobs.length; j++) {
+                        let job = {
+                            company_name:ress[i].jobs[j].company_name,
+                            job_loc:ress[i].jobs[j].job_loc,
+                            job_title:ress[i].jobs[j].job_title,
+                            job_desc:ress[i].jobs[j].job_desc,
+                            user_id:ress[i].email,
+                            _id:ress[i].jobs[j]._id
+                        };
+                        jobs.push(job)
+                    }
+                }
+                console.log(jobs);
+                res.render('logged', {name: name, logged: 'Logged', jobs: jobs});
+
+            })
         }
     } else {
         console.log('not logged');
