@@ -4,6 +4,7 @@ const storage = require('node-persist');
 var User = require('../models/User');
 
 let logged = true;
+let email = '';
 
 async function getData(res) {
     await storage.init();
@@ -17,6 +18,7 @@ async function getData(res) {
     if (logged) {
         let type = await storage.getItem('type');
         let name = ' ' + await storage.getItem('name');
+        email = await storage.getItem('email');
         if (type === 'hr') {
             res.render('logged', {name: name, logged: 'Logged', Desc: 'IA Project', hr: 'hr'});
 
@@ -26,17 +28,25 @@ async function getData(res) {
                 for (let i = 0; i < ress.length; i++) {
                     for (let j = 0; j < ress[i].jobs.length; j++) {
                         let job = {
-                            company_name:ress[i].jobs[j].company_name,
-                            job_loc:ress[i].jobs[j].job_loc,
-                            job_title:ress[i].jobs[j].job_title,
-                            job_desc:ress[i].jobs[j].job_desc,
-                            user_id:ress[i].email,
-                            _id:ress[i].jobs[j]._id
+                            company_name: ress[i].jobs[j].company_name,
+                            job_loc: ress[i].jobs[j].job_loc,
+                            job_title: ress[i].jobs[j].job_title,
+                            job_desc: ress[i].jobs[j].job_desc,
+                            user_id: ress[i]._id,
+                            _id: ress[i].jobs[j]._id
                         };
+                        let found = false;
+                        for (let k = 0; k < ress[i].jobs[j].candidates.length; k++) {
+                            if (''+ress[i].jobs[j].candidates[k].id === '' + email) {
+                                found = true
+                            }
+                        }
+                        job.applied = found;
                         jobs.push(job)
+
+
                     }
                 }
-                console.log(jobs);
                 res.render('logged', {name: name, logged: 'Logged', jobs: jobs});
 
             })

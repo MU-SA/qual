@@ -3,6 +3,7 @@ var router = express.Router();
 var User = require('../models/User');
 const storage = require('node-persist');
 var formidable = require('formidable');
+var mongo = require('mongodb');
 var fs = require('fs');
 
 const multer = require("multer");
@@ -26,30 +27,34 @@ async function check(res, req) {
         type = await storage.getItem('type');
         name = await storage.getItem('name');
         email = await storage.getItem('email');
+
+        let user_id = new mongo.ObjectId(req.query.user_id.replace('/', ''));
+        let job_id = new mongo.ObjectId(req.query.id.replace('/', ''));
         if (type === 'hr') {
             res.redirect('/home')
         } else {
-            res.render('send_cv', {logged: "logged", name: name});
+            User.findOne({_id: user_id}, function (err, user) {
+                if (err)
+                    throw err;
+                for (let i = 0; i < user.jobs.length; i++) {
+
+                    if ('' + new mongo.ObjectId(user.jobs[i]._id) === '' + job_id) {
+                        let candidate = {
+                            id: email
+                        };
+                        user.jobs[i].candidates.push(candidate);
+                        user.save();
+                        res.redirect('/home');
+                        return
+                    }
+                }
+                res.end('job not found')
+
+            })
         }
     }
 }
 
-
-router.post('/', upload.single("filetoupload" /* name attribute of <file> element in your form */),
-    (req, res) => {
-        console.log(req.files.filetoupload.name);
-        const tempPath = req.files.filetoupload.name;
-        const targetPath = path.join(__dirname, "./uploads/"+req.files.filetoupload.name);
-        fs.rename(tempPath, targetPath, err => {
-            if (err) return console.log(err);
-            res
-                .status(200)
-                .contentType("text/plain")
-                .end("File uploaded!");
-        });
-
-    }
-);
 
 // if (false) res.render('send_cv', {errors: [err], logged: logged, name: name});
 // res.render('send_cv', {errors: [{code: 'no file chosen'}], logged: logged, name: name});

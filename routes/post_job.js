@@ -55,7 +55,6 @@ router.post('/', function (req, res) {
             company_name: req.body.company_name,
             job_loc: req.body.job_loc,
             job_desc: req.body.job_desc
-
         };
         User.findOne({email: email}, function (err, user) {
             if (user) {

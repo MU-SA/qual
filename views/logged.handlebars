@@ -11,10 +11,18 @@
                             <strong class="d-inline-block mb-2 text-primary">{{company_name}}</strong> • {{job_loc}}
                         </div>
                         <p class="card-text mb-auto unselectable">{{job_desc}}</p>
-                        <form method="get" action="/send_cv">
+                        <form method="get" action="/apply">
                             <input name="id" type="hidden" value={{_id}}/>
                             <input name="user_id" type="hidden" value={{user_id}}/>
-                            <button name ="submit" value="1" type="submit" class="btn btn-secondary mt-2">Apply</button>
+                            {{#if applied}}
+                                <p class="c-blue btn mt-2">
+                                    Applied successfully
+                                </p>
+                            {{else}}
+                                <button name="submit" value="1" type="submit" class="btn btn-secondary mt-2">
+                                    Apply
+                                </button>
+                            {{/if}}
                         </form>
                     </div>
                 </div>

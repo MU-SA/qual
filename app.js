@@ -11,12 +11,15 @@ var registerRouter = require('./routes/register');
 var loginRouter = require('./routes/login');
 var logout = require('./routes/logout');
 var post_job = require('./routes/post_job');
+var apply = require('./routes/apply');
 var jobs = require('./routes/jobs');
+const fileUpload = require('express-fileupload');
 var send_cv = require('./routes/send_cv');
 
 var app = express();
 
 // View Engine
+
 app.set('views', path.join(__dirname, 'views'));
 app.engine('handlebars', exphbs({defaultLayout: 'layout'}));
 app.set('view engine', 'handlebars');
@@ -25,6 +28,8 @@ app.set('view engine', 'handlebars');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
+app.use(fileUpload());
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 mongoose.connect('mongodb://localhost/iaProject', {useNewUrlParser: true});
@@ -50,6 +55,7 @@ app.use(expressValidator({
 app.use('/', indexRouter);
 app.use('/home', indexRouter);
 app.use('/jobs', jobs);
+app.use('/apply', apply);
 app.use('/logout', logout);
 app.use('/login', loginRouter);
 app.use('/post_job', post_job);

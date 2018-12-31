@@ -23,8 +23,14 @@ var UserSchema = mongoose.Schema({
     type: {
         type: String
     },
-    jobs: [{job_desc: String, job_loc: String, job_title: String, company_name: String,
-        candidates: [{id: String}]
+    jobs: [{
+        job_desc: String
+        , job_loc: String
+        , job_title: String
+        , company_name: String
+        , candidates: [
+            {id: String}
+        ]
     }]
 });
 
