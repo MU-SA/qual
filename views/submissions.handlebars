@@ -1,0 +1,45 @@
+<div style="margin-top: -150px">
+    {{#if jobs}}
+        {{#each jobs}}
+            <div class="col-lg-12 p-0">
+                <div class="card flex-md-row mb-4 shadow-sm h-md-250">
+                    <div class="card-body d-flex flex-column align-items-start">
+                        <h3 class="mb-0">
+                            <h4 class="text-dark" href="#">{{job_title}}</h4>
+                        </h3>
+                        {{#if candidates}}
+                            <h6 class="subtitle-2 text-muted">Candidates</h6>
+                            {{#each candidates}}
+
+                                <div class="card-body p-0 pb-2 text-left">
+                                    <form class="m-2" method="post">
+
+                                        <p
+                                                class="c-blue p-0 m-0 subtitle-1">{{id}}</p>
+
+                                    </form>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-secondary">Approve</button>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary border-left-0 border-right-0">View</button>
+                                            <button type="button" class="btn btn-sm btn-outline-danger">Reject</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            {{/each}}
+                        {{else}}
+                            <div class="mb-1 text-muted">
+                                <strong class="d-inline-block mb-2 c-pink">No Submissions yet</strong>
+                            </div>
+                        {{/if}}
+
+                        <p class="card-text mb-auto unselectable">{{job_desc}}</p>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    {{else}}
+        <p class="c-white">No jobs for this user</p>
+    {{/if}}
+
+</div>

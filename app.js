@@ -13,6 +13,7 @@ var logout = require('./routes/logout');
 var post_job = require('./routes/post_job');
 var apply = require('./routes/apply');
 var jobs = require('./routes/jobs');
+var submissions = require('./routes/submissions');
 const fileUpload = require('express-fileupload');
 var send_cv = require('./routes/send_cv');
 
@@ -56,6 +57,7 @@ app.use('/', indexRouter);
 app.use('/home', indexRouter);
 app.use('/jobs', jobs);
 app.use('/apply', apply);
+app.use('/submissions', submissions);
 app.use('/logout', logout);
 app.use('/login', loginRouter);
 app.use('/post_job', post_job);
