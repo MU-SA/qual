@@ -1,21 +1,18 @@
 <!doctype html>
 <html lang="en">
 <head>
-
     <title>{{{title}}}</title>
     <!-- Bootstrap core CSS -->
     <link href="/stylesheets/bootstrap.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <!-- Custom styles for this template -->
     <link href="/stylesheets/cover.css" rel="stylesheet">
-    <link rel="icon" href="https://wuzzuf.net/static/icons-e49a7611953c474234c6f386e541e7af/apple-touch-icon-120x120.png">
-    <link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+    <link rel="icon"
+          href="https://wuzzuf.net/static/icons-e49a7611953c474234c6f386e541e7af/apple-touch-icon-120x120.png">
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
     <link rel="stylesheet" href="/stylesheets/bootstrap.css">
     <link rel="stylesheet" href="/stylesheets/register.css">
-
 </head>
-
 <body class="text-center backg-blue m-0">
 {{#if logged}}
     <div class="position-absolute hide-follow align-items-baseline position-fixed mr-5 p-3 right-0 row">
@@ -27,8 +24,8 @@
 <nav class="col-md-2 text-left bg-white d-none d-md-block sidebar">
     <div class="sidebar-sticky">
         <ul class="nav flex-column">
-            <li class="nav-item" >
-                <a class="nav-link active" id="post"  href="/post_job">
+            <li class="nav-item">
+                <a class="nav-link active" id="post" href="/post_job">
                     <span data-feather="home " id="post"></span>
                     Post a job
                 </a>
@@ -64,7 +61,6 @@
                 </a>
             </li>
         </ul>
-
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
             <span>Saved reports</span>
             <a class="d-flex align-items-center text-muted" href="#">
@@ -100,10 +96,7 @@
     </div>
 </nav>
 <div class="cover-container backg-blue d-flex w-100 h-100 p-3 mx-auto flex-column">
-
     <header class="masthead mb-auto">
-
-
         <div class="inner ">
             <h5 class="masthead-brand font-weight-bold c-white">IA</h5>
             {{#if logged}}
@@ -111,10 +104,8 @@
                        style="margin: auto;font-size: 12px;max-width:180px;font-family: Rubik,serif;" type="text"
                        placeholder="Search">
             {{/if}}
-
             <nav class="nav  nav-masthead justify-content-center">
                 {{#if logged}}
-
                     <a class="nav-link" id="home" href="/">Home</a>
                     {{#if hr}}
                         <a class="nav-link" id="jobs" href="/jobs">jobs</a>
@@ -124,12 +115,9 @@
                     <a class="nav-link" id="home" href="/">Home</a>
                     <a class="nav-link" id="login" href="/login">Login</a>
                     <a class="nav-link" id="register" href="/register">Register</a>
-
                 {{/if}}
             </nav>
-
         </div>
-
     </header>
 
     <main role="main" class="backg-blue cover ">
@@ -137,11 +125,6 @@
     </main>
 
 </div>
-
-
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -158,13 +141,13 @@
     else if ((window.location.href).includes('/login')) {
         document.getElementById('login').classList.add('active');
         console.log(window.location.href)
-    }else if((window.location.href).includes('/post_job')){
+    } else if ((window.location.href).includes('/post_job')) {
         document.getElementById('post').classList.add('c-blue');
         console.log(window.location.href)
-    }else if((window.location.href).includes('/jobs')){
+    } else if ((window.location.href).includes('/jobs')) {
         document.getElementById('jobs').classList.add('active');
         console.log(window.location.href)
-    }else if((window.location.href).includes('/submissions')){
+    } else if ((window.location.href).includes('/submissions')) {
         document.getElementById('submissions').classList.add('c-blue');
         console.log(window.location.href)
     }
@@ -174,8 +157,5 @@
     }
 </script>
 
-<script>
-    $('.textarea').autoResize();
-</script>
 </body>
 </html>
