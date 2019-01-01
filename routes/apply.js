@@ -17,7 +17,6 @@ let name = "";
 let type = "";
 let email = "";
 
-
 async function check(res, req) {
     await storage.init();
     let length = await storage.length();
@@ -49,11 +48,7 @@ async function check(res, req) {
                     }
                 }
                 res.end('job not found')
-
             })
-
-
-
         }
     }
 }
