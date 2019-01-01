@@ -20,15 +20,16 @@ async function getData(res) {
                 for (let i = 0; i < user.jobs.length; i++) {
                     candidates = [];
                     for (let j = 0; j < user.jobs[i].candidates.length; j++) {
-
                         let candidate = {
                             id: user.jobs[i].candidates[j].id,
+                            approved:user.jobs[i].candidates[j].approved
                         };
                         candidates.push(candidate)
                     }
                     let job = {
                         candidates:candidates,
-                        job_title: user.jobs[i].job_title
+                        job_title: user.jobs[i].job_title,
+                        job_id: user.jobs[i]._id
                     };
                     jobs.push(job);
                 }

@@ -29,7 +29,7 @@ var UserSchema = mongoose.Schema({
         , job_title: String
         , company_name: String
         , candidates: [
-            {id: String}
+            {id: String, approved: Boolean}
         ]
     }]
 });

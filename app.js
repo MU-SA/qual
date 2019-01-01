@@ -16,6 +16,7 @@ var jobs = require('./routes/jobs');
 var submissions = require('./routes/submissions');
 const fileUpload = require('express-fileupload');
 var send_cv = require('./routes/send_cv');
+var send_mail = require('./routes/send_mail');
 
 var app = express();
 
@@ -55,7 +56,9 @@ app.use(expressValidator({
 
 app.use('/', indexRouter);
 app.use('/home', indexRouter);
+
 app.use('/jobs', jobs);
+app.use('/send_mail', send_mail);
 app.use('/apply', apply);
 app.use('/submissions', submissions);
 app.use('/logout', logout);

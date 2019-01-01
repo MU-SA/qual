@@ -40,49 +40,24 @@ async function check(res, req) {
 
                     if ('' + new mongo.ObjectId(user.jobs[i]._id) === '' + job_id) {
                         let candidate = {
-                            id: email
+                            id: email,
+                            approved:false
                         };
                         user.jobs[i].candidates.push(candidate);
                         user.save();
                         res.redirect('/home');
-                        return
                     }
                 }
                 res.end('job not found')
 
             })
+
+
+
         }
     }
 }
 
-
-// if (false) res.render('send_cv', {errors: [err], logged: logged, name: name});
-// res.render('send_cv', {errors: [{code: 'no file chosen'}], logged: logged, name: name});
-// upload.single("file" /* name attribute of <file> element in your form */),
-//     (req, res) => {
-//         const tempPath = req.file.path;
-//         const targetPath = path.join(__dirname, "./uploads/image.png");
-//
-//         if (path.extname(req.file.originalname).toLowerCase() === ".png") {
-//             fs.rename(tempPath, targetPath, err => {
-//                 if (err) return handleError(err, res);
-//
-//                 res
-//                     .status(200)
-//                     .contentType("text/plain")
-//                     .end("File uploaded!");
-//             });
-//         } else {
-//             fs.unlink(tempPath, err => {
-//                 if (err) return handleError(err, res);
-//
-//                 res
-//                     .status(403)
-//                     .contentType("text/plain")
-//                     .end("Only .png files are allowed!");
-//             });
-//         }
-//     }
 router.get('/', function (req, res) {
     check(res, req)
 });
