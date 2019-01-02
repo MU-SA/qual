@@ -34,7 +34,7 @@ async function getData(res, req) {
                 users.forEach(function (user) {
                     search_result.push(user);
                 });
-                console.log(users)
+                console.log(users);
                 res.render('search', {logged: "logged", hr: 'hr', name: name, search_result: search_result})
 
             });
