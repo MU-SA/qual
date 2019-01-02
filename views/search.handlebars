@@ -1,0 +1,53 @@
+{{#if search_result}}
+<div style="margin-top: -150px">
+
+    {{#each search_result}}
+        <div class="card-body p-0 pb-2 text-left" >
+            <form class="m-2 card p-2" method="post">
+                <p class="c-dark p-0 m-0 subtitle-1">{{name}}</p>
+                <p class="c-blue p-0 m-0 subtitle-1">{{email}}</p>
+
+                <div class="d-flex mt-2">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-secondary border-left-0 border-right-0">View</button>
+                    </div>
+                </div>
+            </form>
+
+
+        </div>
+    {{/each}}
+
+</div>
+
+{{else}}
+    <form method="post" action="/search" class="text-left" style="margin-top: -150px">
+
+        <div class="input-group">
+            <input type="text" class="form-control c-dark" name="query"
+                   style="font-size: 15px;font-family: Rubik,serif;"
+                   placeholder="Name, email, exam type etc...">
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-outline-light">Search</button>
+            </div>
+        </div>
+
+        <hr class="mb-4">
+        <div class="col-md-5 mb-3">
+            <label for="options">Search options</label>
+            <select name="search_option" class="custom-select d-block w-100" id="options" required>
+                <option value="">Choose...</option>
+                <option name="search_option" value="email">Email</option>
+                <option name="search_option" value="name">Name</option>
+                <option name="search_option" value="ex_type">Exam Type</option>
+                <option name="search_option" value="ex_date">Exam Date</option>
+            </select>
+            <div class="invalid-feedback">
+                Please select a valid option.
+            </div>
+        </div>
+    </form>
+
+{{/if}}
+
+

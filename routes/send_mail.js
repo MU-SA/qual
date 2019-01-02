@@ -40,33 +40,24 @@ async function send_mail(data, res) {
         if (err)
             throw err;
         console.log(email);
-        console.log(user)
+        console.log(user);
         let job_id = new mongo.ObjectId(data.job_id.replace('/', ''));
         for (let i = 0; i < user.jobs.length; i++) {
             if ('' + new mongo.ObjectId(user.jobs[i]._id) === '' + job_id) {
                 for (let j = 0; j < user.jobs[i].candidates.length; j++) {
                     if (user.jobs[i].candidates[j].id.replace('/', '') === data.email.replace('/', '')) {
-                        let cand = {
-                            id: data.email.replace('/', ''),
-                            approved: true
-                        };
-                        console.log('hehhe')
-                        let by = "jobs."+i+".candidates.$.approved";
-                        var queryParam = {};
+                        let by = "jobs." + i + ".candidates.$.approved";
+                        let queryParam = {};
                         queryParam[by] = true;
                         User.update({"jobs.candidates.id": data.email.replace('/', '')},
                             {"$set": queryParam},
                             function (err, numAff) {
-
+//klsaxkla
                             })
-                    } else {
-                        console.log('xasxa')
                     }
                 }
-
             }
         }
-
     });
     res.redirect('/submissions');
 

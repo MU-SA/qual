@@ -20,7 +20,7 @@ async function getData(res) {
         let name = ' ' + await storage.getItem('name');
         email = await storage.getItem('email');
         if (type === 'hr') {
-            res.render('logged', {name: name, logged: 'Logged', Desc: 'IA Project', hr: 'hr'});
+            res.render('logged', {name: name, logged: 'Logged', Desc: 'IA Project', hr: 'hr', show_bar:true});
 
         } else {
             User.find({}, function (err, ress) {

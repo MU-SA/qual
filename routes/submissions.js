@@ -17,17 +17,19 @@ async function getData(res) {
         let type = await storage.getItem('type');
         if (type === 'hr') {
             User.findOne({email: email}, function (err, user) {
+                if (err)
+                    throw err;
                 for (let i = 0; i < user.jobs.length; i++) {
                     candidates = [];
                     for (let j = 0; j < user.jobs[i].candidates.length; j++) {
                         let candidate = {
                             id: user.jobs[i].candidates[j].id,
-                            approved:user.jobs[i].candidates[j].approved
+                            approved: user.jobs[i].candidates[j].approved
                         };
                         candidates.push(candidate)
                     }
                     let job = {
-                        candidates:candidates,
+                        candidates: candidates,
                         job_title: user.jobs[i].job_title,
                         job_id: user.jobs[i]._id
                     };

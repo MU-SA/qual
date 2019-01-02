@@ -17,6 +17,7 @@ var submissions = require('./routes/submissions');
 const fileUpload = require('express-fileupload');
 var send_cv = require('./routes/send_cv');
 var send_mail = require('./routes/send_mail');
+var search = require('./routes/search');
 
 var app = express();
 
@@ -66,6 +67,7 @@ app.use('/login', loginRouter);
 app.use('/post_job', post_job);
 app.use('/register', registerRouter);
 app.use('/send_cv', send_cv);
+app.use('/search', search);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
